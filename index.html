@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- favicon.ico 404 (Not Found) -->
+		<link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+	</head>
+	<body>
+		<p id="demo"></p>
+
+		<p>
+			A function is triggerled when the button is clicked. The function outputs
+			some text in a p element with id="demo".
+		</p>
+
+		<!-- The core Firebase JS SDK is always required and must be listed first -->
+		<script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-analytics.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-messaging.js"></script>
+
+		<script>
+			var firebaseConfig = {
+				apiKey: 'AIzaSyBHGNTaD1_ZcMEP9mNS87nRx0GH_VoFj-0',
+				authDomain: 'notification-f19f8.firebaseapp.com',
+				projectId: 'notification-f19f8',
+				storageBucket: 'notification-f19f8.appspot.com',
+				messagingSenderId: '533004631107',
+				appId: '1:533004631107:web:573a8181e0322cf06c68f6',
+				measurementId: 'G-GDZD7BYTXG',
+			};
+			// Initialize Firebase
+			firebase.initializeApp(firebaseConfig);
+
+			//모든 메세지 서비스 접근 ㅏ능
+			const messagings = firebase.messaging();
+			messagings
+				.requestPermission()
+				.then(function () {
+					console.log('Have Permission');
+					return messagings.getToken();
+				})
+				.then(function (token) {
+					console.log(token);
+				})
+				.catch(function (err) {
+					console.log('Error Occured.', err);
+				});
+
+			// [END on_background_message]
+		</script>
+	</body>
+</html>
+
