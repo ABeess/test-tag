@@ -13,10 +13,9 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout/@v2
-    steps: logs
-      - name: Run script file
-      - run: echo "Running script"
-    
+      # - name: Checkout
+      #   uses: actions/checkout/@v2
+      - name: Run scripts
+        run: echo "Running scripts"
+        shell: bash
 
