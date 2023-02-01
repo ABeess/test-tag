@@ -1,7 +1,8 @@
 name: client
 on:
   push:
-    branches: ['main']
+    tags:
+      - '*'
 jobs:
   # runs_script:
   #   runs-on: ubuntu-20.04
@@ -16,6 +17,7 @@ jobs:
       # - name: Checkout
       #   uses: actions/checkout/@v2
       - name: Run scripts
-        run: echo "Running scripts"
-        shell: bash
+        run: |
+          echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
+          echo "Tag name from github.ref_name: ${{  github.ref_name }}"
 
